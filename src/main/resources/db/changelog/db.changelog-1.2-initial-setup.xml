@@ -5,7 +5,12 @@
         xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
 
-    <include file="db.changelog-1.0-initial-setup.xml" relativeToChangelogFile="true"/>
-    <include file="db.changelog-1.1-initial-setup.xml" relativeToChangelogFile="true"/>
-    <include file="db.changelog-1.2-initial-setup.xml" relativeToChangelogFile="true"/>
+    <changeSet id="7-update-korisnik-table" author="sofija">
+        <addColumn tableName="korisnik">
+            <column name="rola" type="varchar(255)">
+                <constraints nullable="true"/>
+            </column>
+        </addColumn>
+    </changeSet>
+
 </databaseChangeLog>
