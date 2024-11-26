@@ -6,5 +6,6 @@
         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
 
     <include file="db.changelog-1.0-initial-setup.xml" relativeToChangelogFile="true"/>
+    <include file="db.changelog-1.1-korisnik-kreirao.xml" relativeToChangelogFile="true"/>
 
 </databaseChangeLog>

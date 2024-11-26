@@ -1,0 +1,83 @@
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.17.xsd">
+
+    <changeSet id="8-add-korisnik-columns-to-polje" author="sofija">
+        <addColumn tableName="polje">
+            <column name="id_korisnik_kreirao" type="bigint" />
+            <column name="id_korisnik_poslednji_azurirao" type="bigint" />
+        </addColumn>
+        <addForeignKeyConstraint
+                baseTableName="polje"
+                baseColumnNames="id_korisnik_kreirao"
+                referencedTableName="korisnik"
+                referencedColumnNames="id"
+                constraintName="fk_polje_kreirao" />
+        <addForeignKeyConstraint
+                baseTableName="polje"
+                baseColumnNames="id_korisnik_poslednji_azurirao"
+                referencedTableName="korisnik"
+                referencedColumnNames="id"
+                constraintName="fk_polje_azurirao" />
+    </changeSet>
+
+    <changeSet id="9-add-korisnik-columns-to-polje_popunjeno" author="sofija">
+        <addColumn tableName="polje_popunjeno">
+            <column name="id_korisnik_kreirao" type="bigint" />
+            <column name="id_korisnik_poslednji_azurirao" type="bigint" />
+        </addColumn>
+        <addForeignKeyConstraint
+                baseTableName="polje_popunjeno"
+                baseColumnNames="id_korisnik_kreirao"
+                referencedTableName="korisnik"
+                referencedColumnNames="id"
+                constraintName="fk_polje_popunjeno_kreirao" />
+        <addForeignKeyConstraint
+                baseTableName="polje_popunjeno"
+                baseColumnNames="id_korisnik_poslednji_azurirao"
+                referencedTableName="korisnik"
+                referencedColumnNames="id"
+                constraintName="fk_polje_popunjeno_azurirao" />
+    </changeSet>
+
+    <changeSet id="10-add-korisnik-columns-to-formular" author="sofija">
+        <addColumn tableName="formular">
+            <column name="id_korisnik_kreirao" type="bigint" />
+            <column name="id_korisnik_poslednji_azurirao" type="bigint" />
+        </addColumn>
+        <addForeignKeyConstraint
+                baseTableName="formular"
+                baseColumnNames="id_korisnik_kreirao"
+                referencedTableName="korisnik"
+                referencedColumnNames="id"
+                constraintName="fk_formular_kreirao" />
+        <addForeignKeyConstraint
+                baseTableName="formular"
+                baseColumnNames="id_korisnik_poslednji_azurirao"
+                referencedTableName="korisnik"
+                referencedColumnNames="id"
+                constraintName="fk_formular_azurirao" />
+    </changeSet>
+
+    <changeSet id="11-add-korisnik-columns-to-formular_popunjen" author="sofija">
+        <addColumn tableName="formular_popunjen">
+            <column name="id_korisnik_kreirao" type="bigint" />
+            <column name="id_korisnik_poslednji_azurirao" type="bigint" />
+        </addColumn>
+        <addForeignKeyConstraint
+                baseTableName="formular_popunjen"
+                baseColumnNames="id_korisnik_kreirao"
+                referencedTableName="korisnik"
+                referencedColumnNames="id"
+                constraintName="fk_formular_popunjen_kreirao" />
+        <addForeignKeyConstraint
+                baseTableName="formular_popunjen"
+                baseColumnNames="id_korisnik_poslednji_azurirao"
+                referencedTableName="korisnik"
+                referencedColumnNames="id"
+                constraintName="fk_formular_popunjen_azurirao" />
+    </changeSet>
+
+</databaseChangeLog>
