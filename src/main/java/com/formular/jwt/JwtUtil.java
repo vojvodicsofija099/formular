@@ -20,7 +20,7 @@ public class JwtUtil {
                 .setSubject(korisnickoIme)
                 .claim("rola", rola.name())
                 .setIssuedAt(new Date())
-                .setExpiration(new Date(System.currentTimeMillis() + 1000 * 60 * 60)) //1h expiration
+                .setExpiration(new Date(System.currentTimeMillis() + 1000 * 60 * 60 * 10)) //10h expiration
                 .signWith(SignatureAlgorithm.HS512, secretKey)
                 .compact();
     }

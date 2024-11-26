@@ -20,7 +20,7 @@ public class KorisnickiDetalji implements UserDetails {
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        // Koristi rolu korisnika kao GrantedAuthority
+
         return Collections.singletonList(new SimpleGrantedAuthority(korisnik.getRola().name()));
     }
 

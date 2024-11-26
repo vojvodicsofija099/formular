@@ -6,10 +6,12 @@ import lombok.Getter;
 
 @Getter
 @AllArgsConstructor
-public class LoginRequest {
+public class PopunjenoPoljeRequest {
 
     @NotNull
-    private final String korisnickoIme;
+    private final Long poljeId;
     @NotNull
-    private final String lozinka;
+    private final String vrednostTekst;
+    @NotNull
+    private final Double vrednostBroj;
 }

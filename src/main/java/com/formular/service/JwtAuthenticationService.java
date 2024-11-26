@@ -2,8 +2,10 @@ package com.formular.service;
 
 import com.formular.authorization.KorisnickiDetalji;
 import com.formular.jwt.JwtUtil;
+import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.web.authentication.WebAuthenticationDetailsSource;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -17,16 +19,20 @@ public class JwtAuthenticationService {
         this.korisnikServis = korisnikServis;
     }
 
-    public void setUpAuthentication(String token) {
+    public String setUpAuthentication(String token, HttpServletRequest request) {
 
         String korisnickoIme = jwtUtil.extractUsername(token);
-        KorisnickiDetalji detalji = (KorisnickiDetalji) korisnikServis.loadUserByUsername(korisnickoIme);
+        KorisnickiDetalji detalji = korisnikServis.loadUserByUsername(korisnickoIme);
 
         if(jwtUtil.validateToken(token, korisnickoIme)) {
             UsernamePasswordAuthenticationToken usernamePasswordAuthenticationToken =
-                    new UsernamePasswordAuthenticationToken(korisnickoIme, null, detalji.getAuthorities());
+                    new UsernamePasswordAuthenticationToken(detalji, null, detalji.getAuthorities());
+            usernamePasswordAuthenticationToken.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
+
             SecurityContextHolder.getContext().setAuthentication(usernamePasswordAuthenticationToken);
         }
+
+        return korisnickoIme;
     }
 
 }

@@ -33,13 +33,11 @@ public class SecurityConfig {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
 
         http
-                .csrf(csrf -> csrf
-                        .ignoringRequestMatchers("/api/auth/login")
-                )
+                .csrf(csrf -> csrf.disable())
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers("/api/auth/login").permitAll() // Allow login endpoint without authentication
-                        .requestMatchers("/admin/**").hasAuthority("ADMIN")
-                        .requestMatchers("/radnik/**").hasAuthority("RADNIK")
+                        .requestMatchers("/api/admin/**").hasAuthority("ADMIN")
+                        .requestMatchers("/api/common/**").hasAnyAuthority("RADNIK", "ADMIN")
                         .anyRequest().authenticated() // All other requests require authentication
                 )
                 .sessionManagement(session -> session
