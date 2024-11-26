@@ -1,6 +1,7 @@
 package com.formular.model;
 
 import jakarta.persistence.*;
+import lombok.Builder;
 import lombok.Getter;
 
 import java.time.LocalDate;
@@ -8,6 +9,7 @@ import java.time.LocalDate;
 @Entity
 @Table(name = "statistika")
 @Getter
+@Builder
 public class Statistika {
 
     @Id
