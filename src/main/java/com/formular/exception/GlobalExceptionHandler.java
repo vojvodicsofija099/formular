@@ -6,6 +6,8 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.method.annotation.HandlerMethodValidationException;
 
+import java.sql.SQLIntegrityConstraintViolationException;
+import java.sql.SQLNonTransientException;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -30,6 +32,16 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(FormularManagementException.class)
     @ResponseStatus(UNPROCESSABLE_ENTITY)
     public ResponseEntity<String> handleBusinessException(FormularManagementException ex) {
+        return ResponseEntity
+                .status(UNPROCESSABLE_ENTITY)
+                .contentType(APPLICATION_JSON)
+                .body(ex.getMessage());
+    }
+
+
+    @ExceptionHandler(SQLIntegrityConstraintViolationException.class)
+    @ResponseStatus(UNPROCESSABLE_ENTITY)
+    public ResponseEntity<String> handleSQLIntegrityViolationException(SQLIntegrityConstraintViolationException ex) {
         return ResponseEntity
                 .status(UNPROCESSABLE_ENTITY)
                 .contentType(APPLICATION_JSON)

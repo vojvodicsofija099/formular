@@ -1,19 +1,16 @@
-package com.formular.request;
+package com.formular.request.update;
 
-import com.formular.constants.FormularConstants;
+import com.formular.request.create.CreatePoljeReguest;
+import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
-import jakarta.validation.constraints.NotNull;
-
-
-import java.util.Map;
-
-import static com.formular.constants.FormularConstants.VALUE_NOT_NULL;
 
 @Getter
 @AllArgsConstructor
-public class PoljeReguest {
+public class UpdatePoljeRequest {
 
+    @NotNull
+    private final Long id;
     @NotNull
     private final String naziv;
     @NotNull

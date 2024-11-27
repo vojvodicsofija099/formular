@@ -1,17 +1,16 @@
 package com.formular.model;
 
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "korisnik")
 @Getter
-@Setter
+@Builder
 @NoArgsConstructor
+@AllArgsConstructor
 public class Korisnik {
 
     @Id

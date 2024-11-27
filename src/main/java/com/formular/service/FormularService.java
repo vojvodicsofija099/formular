@@ -8,17 +8,13 @@ import com.formular.model.Polje;
 import com.formular.repository.FormularRepository;
 import com.formular.repository.KorisnikRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.PageImpl;
 import org.springframework.stereotype.Service;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Pageable;
 
-import java.sql.Timestamp;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Service
 public class FormularService {
@@ -88,7 +84,7 @@ public class FormularService {
             if (polje != null) {
                 PoljeDTO poljeDTO = PoljeDTO.builder()
                         .naziv(polje.getNaziv())
-                        .redosled(polje.getPrikaziRedosled())
+                        .redosled(polje.getPrikazniRedosled())
                         .tip(polje.getTip().name())
                         .build();
                 poljaList.add(poljeDTO);

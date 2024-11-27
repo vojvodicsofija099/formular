@@ -7,5 +7,6 @@
 
     <include file="db.changelog-1.0-initial-setup.xml" relativeToChangelogFile="true"/>
     <include file="db.changelog-1.1-korisnik-kreirao.xml" relativeToChangelogFile="true"/>
+    <include file="db.changelog-1.2-unique-constraint-polje.xml" relativeToChangelogFile="true"/>
 
 </databaseChangeLog>

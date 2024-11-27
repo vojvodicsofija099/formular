@@ -3,12 +3,14 @@ package com.formular.controller;
 import com.formular.authorization.KorisnickiDetalji;
 import com.formular.dto.FormularDTO;
 import com.formular.dto.FormularPopunjenDTO;
+import com.formular.dto.PoljeDTO;
 import com.formular.jwt.JwtUtil;
 import com.formular.model.Korisnik;
-import com.formular.request.FormularRequest;
-import com.formular.request.LoginRequest;
-import com.formular.request.PoljeReguest;
-import com.formular.request.PopunjenFormularRequest;
+import com.formular.request.create.FormularRequest;
+import com.formular.request.create.LoginRequest;
+import com.formular.request.create.CreatePoljeReguest;
+import com.formular.request.create.PopunjenFormularRequest;
+import com.formular.request.update.UpdatePoljeRequest;
 import com.formular.service.FormularPopunjenService;
 import com.formular.service.FormularService;
 import com.formular.service.PoljeService;
@@ -23,6 +25,8 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 import static com.formular.controller.FormularManagerAPI.API;
 
@@ -72,10 +76,37 @@ public class FormularManagerController implements FormularManagerAPI {
     }
 
     @Override
-    public void createPolje(PoljeReguest poljeRequest) {
+    public void createPolje(CreatePoljeReguest poljeRequest) {
         poljeService.createPolje(poljeRequest.getNaziv(), poljeRequest.getIdFormulara(), poljeRequest.getRedosled(),
                 poljeRequest.getTip(), getCurrentUserDetails().getUsername());
     }
+
+    @Override
+    public void updatePolje(UpdatePoljeRequest poljeRequest) {
+        poljeService.updatePolje(poljeRequest.getId(), poljeRequest.getNaziv(), poljeRequest.getIdFormulara(), poljeRequest.getRedosled(),
+                poljeRequest.getTip(), getCurrentUserDetails().getUsername());
+    }
+
+    @Override
+    public void deletePolje(Long id) {
+        poljeService.deletePolje(id);
+    }
+
+    @Override
+    public PoljeDTO getPoljeById(@PathVariable Long id) {
+        return poljeService.getPoljeById(id);
+    }
+    @Override
+    public List<PoljeDTO> getAllPolja() {
+        return poljeService.getAllPolja();
+    }
+    @Override
+    public List<PoljeDTO> getPoljaForFormularId(@PathVariable Long formularId) {
+        return poljeService.getPoljaForFormularId(formularId);
+    }
+
+
+    //formular popunjen
 
     public ResponseEntity<FormularPopunjenDTO> popuniFormular(@RequestBody @Valid PopunjenFormularRequest popunjenFormularRequest) {
         FormularPopunjenDTO formularPopunjenDTO = formularPopunjenService.popuniFormular(popunjenFormularRequest.getFormularId(), getCurrentUserDetails().getUsername(), popunjenFormularRequest.getPopunjenaPolja());

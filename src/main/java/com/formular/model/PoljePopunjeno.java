@@ -1,6 +1,7 @@
 package com.formular.model;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,6 +12,7 @@ import java.time.LocalDateTime;
 @Table(name = "polje_popunjeno")
 @Getter
 @Builder
+@AllArgsConstructor
 public class PoljePopunjeno {
 
     @Id

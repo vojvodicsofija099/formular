@@ -4,9 +4,8 @@ import com.formular.dto.FormularPopunjenDTO;
 import com.formular.dto.PoljePopunjenoDTO;
 import com.formular.exception.FormularManagementException;
 import com.formular.model.*;
-import com.formular.model.Polje.TipPolja;
 import com.formular.repository.*;
-import com.formular.request.PopunjenoPoljeRequest;
+import com.formular.request.create.PopunjenoPoljeRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

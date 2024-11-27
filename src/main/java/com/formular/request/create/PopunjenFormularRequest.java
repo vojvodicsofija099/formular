@@ -1,9 +1,8 @@
-package com.formular.request;
+package com.formular.request.create;
 
 import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
-import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.List;
 

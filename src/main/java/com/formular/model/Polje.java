@@ -25,8 +25,8 @@ public class Polje {
     @Column(name = "naziv", nullable = false)
     private String naziv;
 
-    @Column(name = "prikazi_redosled", nullable = false)
-    private Integer prikaziRedosled;
+    @Column(name = "prikazni_redosled", nullable = false)
+    private Integer prikazniRedosled;
 
     @Enumerated(EnumType.STRING)
     @Column(name = "tip", nullable = false)
