@@ -20,11 +20,13 @@ public interface FormularManagerAPI {
     String API = "/api";
     String LOGIN_REQUEST_MAPPING = "/auth/login";
     String ADMIN = "/admin";
-    String FORMULAR_REQUEST_MAPPING = ADMIN + "/formulars";
-    String POLJE_REQUEST_MAPPING = ADMIN + "/polja";
+    String FORMULARI = "/formulari";
+    String POLJA = "/polja";
+    String FORMULAR_REQUEST_MAPPING = ADMIN + FORMULARI;
+    String POLJE_REQUEST_MAPPING = ADMIN + POLJA;
     String COMMON = "/common";
-    String COMMON_FORMULAR_REQUEST_MAPPING = COMMON + "/formulars";
-    String COMMON_POLJE_REQUEST_MAPPING = COMMON + "/polja";
+    String COMMON_FORMULAR_REQUEST_MAPPING = COMMON + FORMULARI;
+    String COMMON_POLJE_REQUEST_MAPPING = COMMON + POLJA;
     String COMMON_POPUNJEN_FORMULAR_REQUEST_MAPPING = COMMON + "/popunjeniFormulari";
 
     @PostMapping(LOGIN_REQUEST_MAPPING)
